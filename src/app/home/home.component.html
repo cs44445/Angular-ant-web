@@ -1,1 +1,38 @@
-<p>home works!</p>
+<nz-layout class="home-wrapper">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-submenu nzTitle="员工管理" nzIcon="user">
+        <ul>
+          <li nz-menu-item>员工列表</li>
+          <li nz-menu-item>添加员工</li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="角色管理" nzIcon="team">
+        <ul>
+          <li nz-menu-item>角色列表</li>
+          <li nz-menu-item>添加角色</li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="权限管理" nzIcon="lock">
+        <ul>
+          <li nz-menu-item>权限列表</li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed"></i>
+    </nz-header>
+    <nz-content>
+      <nz-breadcrumb>
+        <nz-breadcrumb-item>User</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <div class="inner-content">Bill is a cat.</div>
+    </nz-content>
+    <nz-footer>用户管理系统</nz-footer>
+  </nz-layout>
+</nz-layout>

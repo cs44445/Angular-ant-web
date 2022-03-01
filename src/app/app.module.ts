@@ -17,6 +17,9 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -43,7 +46,10 @@ registerLocaleData(zh);
     ReactiveFormsModule,
     NzIconModule,
     NzInputModule,
-    NzCheckboxModule
+    NzCheckboxModule,
+    NzLayoutModule,
+    NzBreadCrumbModule,
+    NzMenuModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

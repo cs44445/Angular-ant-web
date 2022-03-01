@@ -16,6 +16,15 @@ const routes: Routes = [
     canActivate: [AnthGuard]
   },
   {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AnthGuard]
+  }, {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AnthGuard]
+  },
+  {
     path: '**',
     component: NotFoundComponent
   }
