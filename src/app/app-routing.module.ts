@@ -9,7 +9,13 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [AnthGuard]
+    canActivate: [AnthGuard],
+    children: [
+      {
+        path: 'employee',
+        loadChildren: () => import('./employees/employees.module').then(m => m.EmployeesModule)
+      }
+    ]
   },
   {
     path: 'login',
@@ -18,7 +24,13 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AnthGuard]
+    canActivate: [AnthGuard],
+    children: [
+      {
+        path: 'employee',
+        loadChildren: () => import('./employees/employees.module').then(m => m.EmployeesModule)
+      }
+    ]
   },
   {
     path: '**',

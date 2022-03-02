@@ -4,8 +4,8 @@
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-submenu nzTitle="员工管理" nzIcon="user">
         <ul>
-          <li nz-menu-item>员工列表</li>
-          <li nz-menu-item>添加员工</li>
+          <li nz-menu-item routerLink="/employee/list">员工列表</li>
+          <li nz-menu-item routerLink="/employee/add">添加员工</li>
         </ul>
       </li>
       <li nz-submenu nzTitle="角色管理" nzIcon="team">
@@ -43,11 +43,7 @@
       </div>
     </nz-header>
     <nz-content>
-      <nz-breadcrumb>
-        <nz-breadcrumb-item>User</nz-breadcrumb-item>
-        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
-      </nz-breadcrumb>
-      <div class="inner-content">Bill is a cat.</div>
+      <router-outlet></router-outlet>
     </nz-content>
     <nz-footer>用户管理系统</nz-footer>
   </nz-layout>
