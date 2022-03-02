@@ -20,7 +20,7 @@
       <td>
         <a>修改</a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a (click)="deleteEmployee(data.id)">删除</a>
+        <a nz-popconfirm nzPopconfirmTitle="确定删除该员工吗?" (nzOnConfirm)="deleteEmployee(data.id)">删除</a>
       </td>
     </tr>
   </tbody>

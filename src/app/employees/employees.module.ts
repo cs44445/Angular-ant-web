@@ -7,6 +7,8 @@ import { EmployeeAddComponent } from './employee-add/employee-add.component';
 
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     CommonModule,
     EmployeesRoutingModule,
     NzTableModule,
-    NzDividerModule
+    NzDividerModule,
+    NzPopconfirmModule,
+    NzMessageModule
   ]
 })
 export class EmployeesModule { }

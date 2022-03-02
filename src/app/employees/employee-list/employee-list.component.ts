@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { Person } from './employee.type'
 import * as Mock from 'mockjs'
@@ -12,7 +13,7 @@ import * as Mock from 'mockjs'
 
 export class EmployeeListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private message: NzMessageService) { }
   ngOnInit(): void { }
 
   employeeList: Person[] = [
@@ -100,5 +101,6 @@ export class EmployeeListComponent implements OnInit {
 
   deleteEmployee(index: number) {
     this.employeeList = this.employeeList.filter(em => em.id !== index)
+    this.message.success('删除成功!', { nzDuration: 1000 })
   }
 }
