@@ -1,0 +1,13 @@
+.add-wrapper {
+  margin-top: 20px;
+}
+.add-wrapper [nz-form] {
+  max-width: 600px;
+}
+.add-wrapper button {
+  margin-left: 8px;
+}
+.add-wrapper nz-date-picker,
+.add-wrapper nz-range-picker {
+  margin: 0 8px 12px 0;
+}
