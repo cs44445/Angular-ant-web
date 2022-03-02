@@ -7,19 +7,15 @@ import { AnthGuard } from './anth.guard'
 
 const routes: Routes = [
   {
+    path: '',
+    component: HomeComponent,
+    canActivate: [AnthGuard]
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
   {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [AnthGuard]
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [AnthGuard]
-  }, {
     path: 'home',
     component: HomeComponent,
     canActivate: [AnthGuard]

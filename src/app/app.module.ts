@@ -20,6 +20,9 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -49,7 +52,10 @@ registerLocaleData(zh);
     NzCheckboxModule,
     NzLayoutModule,
     NzBreadCrumbModule,
-    NzMenuModule
+    NzMenuModule,
+    NzAvatarModule,
+    NzMessageModule,
+    NzPopconfirmModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
