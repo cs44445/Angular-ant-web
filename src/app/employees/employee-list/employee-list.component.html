@@ -18,10 +18,90 @@
       <td>{{ data.mail }}</td>
       <td>{{ data.joinTime }}</td>
       <td>
-        <a>修改</a>
+        <a (click)="showModal()">修改</a>
         <nz-divider nzType="vertical"></nz-divider>
         <a nz-popconfirm nzPopconfirmTitle="确定删除该员工吗?" (nzOnConfirm)="deleteEmployee(data.id)">删除</a>
       </td>
     </tr>
   </tbody>
 </nz-table>
+
+<!-- 修改弹窗 -->
+<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <!-- <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p> -->
+    <div class="add-wrapper">
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <!-- 姓名 -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="7" nzRequired>姓名:</nz-form-label>
+          <nz-form-control [nzSpan]="12" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+            <input nz-input formControlName="name" placeholder="请输入用户名" />
+            <ng-template #userErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('required')">姓名不能为空</ng-container>
+              <ng-container *ngIf="control.hasError('minLength')">姓名长度最少为2位</ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- 性别 -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="7" nzRequired>性别:</nz-form-label>
+          <nz-form-control [nzSpan]="12" [nzErrorTip]="genderErrorTpl">
+            <nz-radio-group formControlName="gender" [(ngModel)]="radioValue">
+              <label nz-radio nzValue="女">女</label>
+              <label nz-radio nzValue="男">男</label>
+            </nz-radio-group>
+            <ng-template #genderErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('required')">性别为必填项</ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- 邮箱 -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="7" nzRequired>邮箱:</nz-form-label>
+          <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+            <input nz-input formControlName="email" placeholder="请输入邮箱" type="email" />
+            <ng-template #emailErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('email')">邮箱格式不正确</ng-container>
+              <ng-container *ngIf="control.hasError('required')">邮箱是必填项</ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- 手机号 -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="7">手机号:</nz-form-label>
+          <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="phoneErrorTpl">
+            <input nz-input formControlName="phone" placeholder="请输入手机号" />
+            <ng-template #phoneErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('pattern')">手机号码格式不正确</ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- 入职日期 -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="7">入职时间:</nz-form-label>
+          <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="dateErrorTpl">
+            <nz-date-picker formControlName="joinTime" [nzFormat]="'yyyy/MM/dd'"></nz-date-picker>
+            <ng-template #dateErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('dateError')">不能超过当天日期</ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- 添加 重置 -->
+        <!-- <nz-form-item>
+          <nz-form-control [nzOffset]="7" [nzSpan]="12">
+            <button nz-button nzType="primary" [disabled]="!validateForm.valid">添加</button>
+            <button nz-button (click)="resetForm($event)">重置</button>
+          </nz-form-control>
+        </nz-form-item> -->
+      </form>
+    </div>
+  </ng-container>
+</nz-modal>
