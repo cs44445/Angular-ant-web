@@ -7,6 +7,7 @@
       <th>手机号</th>
       <th>邮箱</th>
       <th>入职时间</th>
+      <th>操作</th>
     </tr>
   </thead>
   <tbody>
@@ -29,9 +30,6 @@
 <!-- 修改弹窗 -->
 <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
   <ng-container *nzModalContent>
-    <!-- <p>Content one</p>
-    <p>Content two</p>
-    <p>Content three</p> -->
     <div class="add-wrapper">
       <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
         <!-- 姓名 -->
