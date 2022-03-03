@@ -14,7 +14,7 @@ export class EmployeeAddComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.validateForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
+      name: ['', [Validators.required], [this.nameLengthValidator]],
       gender: ['女', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
       phone: ['', [Validators.pattern(PHONE_NUMBER_REGEXP)]],
@@ -34,6 +34,18 @@ export class EmployeeAddComponent implements OnInit {
       return { dateError: true }
     }
   }
+
+  nameLengthValidator = (control: FormControl) =>
+    new Observable((observer: Observer<ValidationErrors | null>) => {
+      if (!control.value) {
+        observer.next({ error: true, required: true })
+      } else if (control.value.length < 2) {
+        observer.next({ nameLenth: true, error: true })
+      } else {
+        observer.next(null)
+      }
+      observer.complete()
+    })
 
   submitForm(): void {
     // console.log('submit', this.validateForm.value);

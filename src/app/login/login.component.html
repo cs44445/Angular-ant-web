@@ -1,10 +1,15 @@
 <div class="login-wrapper" nz-row nzJustify="space-around" nzAlign="middle">
   <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+
     <nz-form-item>
-      <nz-form-control nzErrorTip="请输入用户名!">
+      <nz-form-control nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
         <nz-input-group nzPrefixIcon="user">
           <input type="text" nz-input formControlName="userName" placeholder="用户名" />
         </nz-input-group>
+        <ng-template #userErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">请输入用户名!</ng-container>
+          <ng-container *ngIf="control.hasError('nameLength')">姓名长度最少为2位</ng-container>
+        </ng-template>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>

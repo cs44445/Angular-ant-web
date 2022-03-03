@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +17,27 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
+      userName: [null, [Validators.required], [this.nameLengthValidator]],
       password: [null, [Validators.required]],
       remember: [true]
     });
+
+    if (localStorage.getItem('userName')) {
+      this.router.navigateByUrl('/home')
+    }
   }
+
+  nameLengthValidator = (control: FormControl) =>
+    new Observable((observer: Observer<ValidationErrors | null>) => {
+      if (!control.value) {
+        observer.next({ error: true, required: true })
+      } else if (control.value.length < 2) {
+        observer.next({ nameLength: true, error: true })
+      } else {
+        observer.next(null)
+      }
+      observer.complete()
+    })
 
   submitForm(): void {
     if (this.validateForm.valid) {

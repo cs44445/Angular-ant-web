@@ -7,7 +7,7 @@
         <input nz-input formControlName="name" placeholder="请输入用户名" />
         <ng-template #userErrorTpl let-control>
           <ng-container *ngIf="control.hasError('required')">姓名不能为空</ng-container>
-          <ng-container *ngIf="control.hasError('minLength')">姓名长度最少为2位</ng-container>
+          <ng-container *ngIf="control.hasError('nameLenth')">姓名长度最少为2位</ng-container>
         </ng-template>
       </nz-form-control>
     </nz-form-item>
